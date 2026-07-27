@@ -6,7 +6,7 @@ Aura is a personal command line application that lets you log your daily mood, w
 
 ---
 
-# Features
+# Features...
 
 -  Daily Aura Commit
   - Mood
