@@ -1,6 +1,6 @@
 Aura CLI
 
-> A  CLI-based daily journal + expense tracker built while learning production grade python.
+> A  CLI based(for now) daily journal + expense tracker built while learning production grade python and other cool topics...
 
 Aura is a personal command line application that lets you log your daily mood, wins, music, energy levels, and expenses while exploring real world backend development concepts such as layered architecture, data validation, configuration management, logging, and testing.
 
@@ -58,7 +58,7 @@ Aura is a personal command line application that lets you log your daily mood, w
 
 ---
 
-# Project Structure
+# Project Structure (try to keep it simple plzz)
 
 ```
 Aura
@@ -82,7 +82,7 @@ Aura
 
 ---
 
-#  Tech Stack
+#  Tech Stack (for now)
 
 - Python 3.12+
 - Typer
@@ -95,7 +95,7 @@ Aura
 
 ---
 
-#  Getting Started
+#  Getting Started (for someone who's just opened the folder)
 
 Clone the repo
 ```
@@ -144,7 +144,7 @@ LOG_PATH=logs/aura.log
 
 ---
 
-#  Commands
+#  Commands (to run ovbio...)
 
 Create today's Aura
 ```bash
@@ -200,7 +200,7 @@ python -m app.cli.main stats
 
 ---
 
-#  Data Storage
+#  Data Storage(what goes where..again, for now)
 
 Aura stores all entries inside
 ```
@@ -210,7 +210,7 @@ No database is required for now.
 
 ---
 
-# Concepts Practiced
+# Concepts Practiced as per the roadmap given...
 
 - Layered Architecture
 - Separation of Concerns
@@ -234,7 +234,6 @@ No database is required for now.
 Aura currently includes automated unit tests using **Pytest**.
 
 Covered functionality:
-
 -  Add Aura Entry
 -  Prevent Duplicate Entries
 -  Search Entries
@@ -258,9 +257,7 @@ python -m pytest
 - [x] JSON Storage
 - [x] Logging
 - [x] Unit Testing with Pytest
-### ---Aura CLI (Completed)---
-
-
+### ---Aura cli is completed here)---
 - [ ] FastAPI Backend
 - [ ] REST API Endpoints
 - [ ] Interactive API Documentation (Swagger/OpenAPI)
@@ -271,7 +268,7 @@ python -m pytest
 - [ ] Deployment
 ---
 
-# Common Errors and Fixes
+# Common Errors and Fixes (u can thank me later)
 
 ### `ModuleNotFoundError`
 
@@ -361,7 +358,7 @@ def __init__(
 
 Aura CLI (v1.0) is Completed
 
-- Production-grade Python Fundamentals
+- Production grade Python Fundamentals
 - Layered Project Architecture
 - CLI Development using Typer
 - Configuration Management
@@ -388,7 +385,7 @@ Now will embark on these topics:
 - 5 Automated Unit Tests
 - Built while learning backend engineering concepts
   
-# Author
+# Guess who built this.......
 
 **Aditya S Hegde**
 
