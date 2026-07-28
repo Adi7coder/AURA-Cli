@@ -3,6 +3,7 @@ Aura CLI
 > A  CLI-based daily journal + expense tracker built while learning production grade python.
 
 Aura is a personal command line application that lets you log your daily mood, wins, music, energy levels, and expenses while exploring real world backend development concepts such as layered architecture, data validation, configuration management, logging, and testing.
+
 (Its simple but cool)
 ---
 
