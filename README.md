@@ -259,6 +259,7 @@ python -m pytest
 - [x] Unit Testing with Pytest
 ### ---Aura CLI (Completed)---
 
+
 - [ ] FastAPI Backend
 - [ ] REST API Endpoints
 - [ ] Interactive API Documentation (Swagger/OpenAPI)
