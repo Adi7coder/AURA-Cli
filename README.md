@@ -268,7 +268,7 @@ python -m pytest
 - [ ] Deployment
 ---
 
-# Common Errors and Fixes (u can thank me later)
+# Common Errors and Fixes (u can thank me later ;) .....)
 
 ### `ModuleNotFoundError`
 
