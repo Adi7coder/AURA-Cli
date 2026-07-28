@@ -210,7 +210,7 @@ No database is required for now.
 ---
 
 # Concepts Practiced
-```md
+
 - Layered Architecture
 - Separation of Concerns
 - Type Hints
@@ -225,7 +225,7 @@ No database is required for now.
 - Search Algorithms
 - Dynamic Attribute Updates (`setattr`)
 - Unit Testing with Pytest
-```
+
 ---
 
 # Testing
