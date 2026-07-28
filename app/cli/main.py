@@ -15,6 +15,7 @@ def Suii():
 @app.command()
 def commit():
     typer.echo(" A U R A\n Boi's Daily Commits To Aura\n")
+    category = typer.prompt("Category").strip().title()
 
     mood = typer.prompt("Mood").strip().title()
     while True:
@@ -147,20 +148,125 @@ def stats():
         fg=typer.colors.CYAN
     )
 
+@app.command()
+def search(query: str):
+    """
+    Search Aura entries.
+    """
+    results = entry_service.search_entries(query)
+
+    if not results:
+        typer.secho(
+            "No matching Aura entries found buddy...",
+            fg=typer.colors.RED
+        )
+        return
+
+    for entry in results:
+        typer.echo("\n" + "=" * 40)
+
+        typer.echo(f" {entry.date}")
+        typer.echo(f"Mood: {entry.mood}")
+        typer.echo(f"Energy: {entry.energy}")
+        typer.echo(f"Today's W: {entry.win}")
+        typer.echo(f"Song: {entry.song}")
+
+        if entry.expenses:
+            typer.echo("\nExpenses:")
+
+            for expense in entry.expenses:
+                typer.echo(
+                    f"• {expense.category} - ₹{expense.amount}"
+                )
+
+@app.command()
+def edit():
+    """
+    Alyt make those changes...
+    """
+
+    typer.echo("\nEdit Today's Aura\n")
+
+    typer.echo("1. Mood")
+    typer.echo("2. Energy")
+    typer.echo("3. Today's W")
+    typer.echo("4. Song")
+
+    choice = typer.prompt( "\nChoose an option to edit (1-4)", type=int)
+    if choice == 1:
+
+        field = "mood"
+
+        value = typer.prompt(
+            "Enter new mood"
+        )
+
+    elif choice == 2:
+
+        field = "energy"
+
+        value = typer.prompt(
+            "Enter new energy",
+            type=int
+        )
+
+    elif choice == 3:
+
+        field = "win"
+
+        value = typer.prompt(
+            "Enter today's new W"
+        )
+
+    elif choice == 4:
+
+        field = "song"
+
+        value = typer.prompt(
+            "Enter new song"
+        )
+
+    else:
+
+        typer.secho(
+            "Invalid choice.",
+            fg=typer.colors.RED
+        )
+
+        return
+    try:
+
+        entry_service.update_entry(
+            field,
+            value
+        )
+
+        typer.secho(
+            "Alyt bruh, tdy's Aura entry's updated...",
+            fg=typer.colors.GREEN
+        )
+
+    except ValueError as e:
+
+        typer.secho(
+            str(e),
+            fg=typer.colors.RED
+        )
+
 
 @app.command()
 def expense():
 
     typer.echo("\n Drop some more receipts\n")
 
-    amount = typer.prompt(
+    amount = typer.prompt( 
         "Amount",
         type=float
     )
 
     category = typer.prompt(
         "Category"
-    )
+    ).strip().title()
 
     entry_service.add_expense(
         amount,
@@ -168,7 +274,7 @@ def expense():
     )
 
     typer.secho(
-        "Money vanished...but at least it's tracked in Aura bruh",
+        "Money vanished...Bruhh but at least it's tracked in Aura",
         fg=typer.colors.GREEN
     )
 if __name__ == "__main__":
