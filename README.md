@@ -6,23 +6,25 @@ Aura is a personal command line application that lets you log your daily mood, w
 
 ---
 
-# Features...
+# Features..
 
 -  Daily Aura Commit
+  - Category
   - Mood
   - Energy Level
   - Today's Win
   - Song of the Day
 
-- Expense Tracker
+-  Expense Tracker
   - Add multiple expenses
   - Categorize expenses
   - Append expenses to today's entry
 
 -  History
   - View all previous Aura entries
+  - Chronological ordering
 
--  Statistics
+-  Stats
   - Total entries
   - Average energy
   - Favourite mood
@@ -30,31 +32,51 @@ Aura is a personal command line application that lets you log your daily mood, w
   - Total expenses
   - Highest spending category
 
--  Environment-based Configuration
+-  Search feature
+  - Search by date (`YYYY-MM-DD`)
+  - Search today's entry
+  - Search yesterday's entry
+  - Search by mood
+  - Search by today's win
+  - Search by song
+  - Search by expense category
+
+-  Editing Entries Feature
+  - Update today's mood
+  - Update energy level
+  - Update today's win
+  - Update song
+
+-  Env based Configuration
+
 -  Logging Support
--  JSON-based Storage
+
+-  JSON based Storage
+
+-  Automated Unit Testing using Pytest
 
 ---
 
 # Project Structure
 
 ```
-Aura/
+Aura
 │
-├── app/
-│   ├── cli/
-│   ├── core/
-│   ├── models/
-│   ├── services/
-│   └── storage/
+├── app
+│   ├── cli
+│   ├── core
+│   ├── models
+│   ├── services
+│   └── storage
 │
-├── data/
-├── logs/
-├── tests/
+├── tests
+├── data
+├── logs
 │
+├── README.md
 ├── .env
 ├── .gitignore
-└── README.md
+└── requirements.txt
 ```
 
 ---
@@ -75,9 +97,14 @@ Aura/
 #  Getting Started
 
 Clone the repo
-```bash
-git clone https://github.com/<your-username>/AURA-Cli.git
 ```
+git clone git@github.com:Adi7coder/AURA-Cli.git
+```
+For users without SSH
+```bash
+git clone https://github.com/Adi7coder/AURA-Cli.git
+```
+
 Navigate into the project
 ```bash
 cd AURA-Cli
@@ -134,7 +161,38 @@ python -m app.cli.main history
 ```
 
 View statistics
+```bash
+python -m app.cli.main stats
+```
 
+Add expenses to today's entry
+```bash
+python -m app.cli.main expense
+```
+
+View all previous entries
+```bash
+python -m app.cli.main history
+```
+Search Aura entries
+```bash
+python -m app.cli.main search <query>
+```
+Example runs
+```bash
+python -m app.cli.main search today
+python -m app.cli.main search yesterday
+python -m app.cli.main search 2026-07-28
+python -m app.cli.main search bella
+python -m app.cli.main search food
+```
+
+Edit today's Aura entry
+```bash
+python -m app.cli.main edit
+```
+
+View overall statistics
 ```bash
 python -m app.cli.main stats
 ```
@@ -151,8 +209,8 @@ No database is required for now.
 
 ---
 
-#  Concepts Practiced
-
+# Concepts Practiced
+```md
 - Layered Architecture
 - Separation of Concerns
 - Type Hints
@@ -160,54 +218,79 @@ No database is required for now.
 - Environment Variables
 - JSON Serialization
 - Logging
-- Dependency Management
-- CLI Development
+- Dependency Injection
+- Service Layer Design
+- CLI Development using Typer
 - Error Handling
-
+- Search Algorithms
+- Dynamic Attribute Updates (`setattr`)
+- Unit Testing with Pytest
+```
 ---
 
-#  Testing
+# Testing
 
-(Currently it's under development)
+Aura currently includes automated unit tests using **Pytest**.
 
-Planned:
-- Unit Tests
-- Service Tests
-- Storage Tests
+Covered functionality:
 
+-  Add Aura Entry
+-  Prevent Duplicate Entries
+-  Search Entries
+-  Update Existing Entries
+-  Statistics Calculation
+
+Run all tests
+```bash
+python -m pytest
+```
 ---
 
 # Roadmap
-
 - [x] Daily Aura Commit
 - [x] Expense Tracking
 - [x] History
 - [x] Statistics
-- [ ] Search Entries
-- [ ] Edit Entries
-- [ ] Delete Entries
-- [ ] Rich Terminal UI
-- [ ] FastAPI Backend
-- [ ] Docker
-- [ ] Redis
-- [ ] Celery
-- [ ] PostgreSQL
-- [ ] Deployment
+- [x] Search Entries
+- [x] Edit Entries
+- [x] Environment-based Configuration
+- [x] JSON Storage
+- [x] Logging
+- [x] Unit Testing with Pytest
+### ---Aura CLI (Completed)---
 
+- [ ] FastAPI Backend
+- [ ] REST API Endpoints
+- [ ] Interactive API Documentation (Swagger/OpenAPI)
+- [ ] Docker Containerization
+- [ ] Redis Integration
+- [ ] Celery Background Tasks
+- [ ] PostgreSQL Database
+- [ ] Deployment
 ---
 
-#  Common Errors and their fixes
+# Common Errors and Fixes
 
 ### `ModuleNotFoundError`
-Make sure the virtual environment is activated and all dependencies are installed.
-```
+
+Ensure the virtual environment is activated.
+```bash
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 ---
 
+### `ImportError`
+
+Usually caused by incorrect package imports or missing `__init__.py`.
+Verify project structure and imports.
+
+---
+
 ### `JSONDecodeError`
-If `data/aura.json` becomes corrupted or empty, initialize it with:
+
+If `data/aura.json` becomes empty or corrupted, initialize it with:
 ```json
 []
 ```
@@ -215,7 +298,8 @@ If `data/aura.json` becomes corrupted or empty, initialize it with:
 ---
 
 ### `ValidationError`
-Ensure the `.env` file exists in the project root and contains:
+
+Ensure the `.env` file exists in the project root.
 ```
 APP_NAME=Aura
 DATA_PATH=data/aura.json
@@ -224,14 +308,68 @@ LOG_PATH=logs/aura.log
 
 ---
 
-### Git Authentication Failed
-Use SSH authentication instead of GitHub password authentication.
+### `Pytest Import Errors`
+
+Run tests from the project root.
+```bash
+python -m pytest
+```
+If imports fail, verify:
+- `app/` is a package
+- Virtual environment is activated
 
 ---
 
-#  Current Status as of now...
-This project is being continuously improved while learning:
-- Production Grade Python
+### `Git Authentication Failed`
+GitHub no longer supports password authentication.
+Use SSH authentication instead.
+
+---
+
+### `Non-fast-forward Push Rejected`
+Your local and remote branches have diverged.
+
+Synchronize them before pushing.
+
+```bash
+git pull --rebase origin main
+git push origin main
+```
+
+---
+
+### `JSONStorage() takes no arguments`
+Occurs when tests use dependency injection but `JSONStorage` hasn't been updated.
+Ensure the constructor accepts an optional storage path.
+
+---
+
+### `StatsService.__init__() takes 1 positional argument`
+Refactor `StatsService` to support dependency injection.
+```python
+def __init__(
+    self,
+    entry_service=None
+):
+    self.entry_service = entry_service or EntryService()
+```
+---
+
+# Current Status as of now...
+
+Aura CLI (v1.0) is Completed
+
+- Production-grade Python Fundamentals
+- Layered Project Architecture
+- CLI Development using Typer
+- Configuration Management
+- JSON Storage
+- Logging
+- Search
+- Editing
+- Automated Testing (Pytest)
+
+Now will embark on these topics: 
 - FastAPI
 - Docker
 - Redis
@@ -240,6 +378,14 @@ This project is being continuously improved while learning:
 
 ---
 
+
+# Project Highlights
+- Layered Architecture (CLI → Services → Storage → Models)
+- Production oriented Python project structure
+- Dependency Injection for improved testability
+- 5 Automated Unit Tests
+- Built while learning backend engineering concepts
+  
 # Author
 
 **Aditya S Hegde**
