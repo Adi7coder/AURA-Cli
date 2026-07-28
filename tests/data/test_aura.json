@@ -1,0 +1,15 @@
+[
+    {
+        "date": "2026-07-28",
+        "mood": "Locked In",
+        "energy": 9,
+        "win": "Built Aura",
+        "song": "Bella",
+        "expenses": [
+            {
+                "amount": 250.0,
+                "category": "Food"
+            }
+        ]
+    }
+]
