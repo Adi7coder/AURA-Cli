@@ -1,25 +1,27 @@
 import json
 from pathlib import Path
-
 from app.core.config import settings
 
-
 class JSONStorage:
+    def __init__(self, path: str | None = None):
+        self.path = Path(path or settings.DATA_PATH)
 
-    @staticmethod
-    def load():
-        path = Path(settings.DATA_PATH)
-
-        if not path.exists():
+    def load(self):
+        if not self.path.exists():
             return []
 
-        with open(path, "r") as file:
+        with open(self.path, "r") as file:
             return json.load(file)
 
-    @staticmethod
-    def save(data):
-        path = Path(settings.DATA_PATH)
-        path.parent.mkdir(parents=True, exist_ok=True)
+    def save(self, data):
+        self.path.parent.mkdir(
+            parents=True,
+            exist_ok=True
+        )
 
-        with open(path, "w") as file:
-            json.dump(data, file, indent=4)
+        with open(self.path, "w") as file:
+            json.dump(
+                data,
+                file,
+                indent=4
+            )

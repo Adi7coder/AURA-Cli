@@ -5,8 +5,8 @@ from app.services.entry_service import EntryService
 
 class StatsService:
 
-    def __init__(self):
-        self.entry_service = EntryService()
+    def __init__(self, entry_service: EntryService | None = None):
+        self.entry_service = (entry_service or EntryService())
 
 
     def get_stats(self):
