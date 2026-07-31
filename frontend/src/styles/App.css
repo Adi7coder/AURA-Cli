@@ -1,0 +1,108 @@
+.app{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px 20px;
+
+}
+
+.glass-card{
+
+    width:min(760px,100%);
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:32px;
+
+    padding:48px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.06);
+
+    transition:.35s;
+
+}
+
+.glass-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 40px 80px rgba(0,0,0,.55),
+        0 0 80px rgba(124,92,255,.15);
+
+}
+
+@media(max-width:768px){
+
+    .glass-card{
+
+        padding:28px;
+
+        border-radius:24px;
+
+    }
+
+}
+.header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:12px;
+
+}
+
+.logo svg{
+
+    color:#7c5cff;
+
+}
+
+.logo h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:-1px;
+
+}
+
+.header p{
+
+    color:#9ca3af;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}

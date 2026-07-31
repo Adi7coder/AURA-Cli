@@ -12,7 +12,6 @@ class EntryService:
     def get_entries(self) -> list[AuraEntry]:
         """
          Alyt, lemme fetch da lore frm da vault...
-    
         """
 
         data = self.storage.load()
@@ -99,7 +98,7 @@ class EntryService:
         try:
             search_date = datetime.strptime(
                 query,
-                "%Y-%m-%%d"
+                "%Y-%m-%d"
             ).date()
             return [
                 entry
