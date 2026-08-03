@@ -11,15 +11,10 @@ function EntryForm() {
     const [formData,setFormData]=useState({
 
         date:new Date().toISOString().split("T")[0],
-
         mood:"🙂",
-
         energy:5,
-
         win:"",
-
         song:"",
-
         expenses:[]
 
     });
@@ -29,45 +24,28 @@ function EntryForm() {
     function handleChange(e){
 
         setFormData({
-
             ...formData,
-
             [e.target.name]:e.target.value
-
         });
 
     }
 
     async function handleSubmit(e){
-
         e.preventDefault();
-
         try{
-
             const response=await axios.post(
-
-                "http://127.0.0.1:8000/entries/",
-
+                "/entries/",
                 formData
-
             );
-
-            setMessage(response.data.message);
-
+            setMessage(response.data.msg);
         }
 
         catch(error){
-
             setMessage(
-
                 error.response?.data?.detail ||
-
                 "Something went wrong."
-
             );
-
         }
-
     }
 
     return(
