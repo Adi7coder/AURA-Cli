@@ -49,7 +49,7 @@ Aura started off as a simple command line application and is gradually evolving 
 
 ---
 
-## FastAPI Backend (newly unlocked 😌)
+## FastAPI Backend (newly unlocked...)
 - REST API Endpoints
 - Request Validation using Pydantic
 - JSON Responses
